@@ -1,4 +1,6 @@
-langchain
+streamlit
 langchain-ollama
 langchain-chroma
+langchain-core
+chromadb
 pandas
