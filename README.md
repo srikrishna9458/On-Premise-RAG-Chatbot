@@ -1,27 +1,28 @@
-# On-Premise RAG Chatbot
-**Stack:** Python | LangChain | Ollama | ChromaDB | Llama 3.2
+# Aura-RAG: On-Premise Chatbot
+**Stack:** Python | LangChain | Ollama | ChromaDB | Streamlit
 
-Aura-RAG is a localized Retrieval-Augmented Generation (RAG) system designed to interact with private document sets without external API dependencies. This project demonstrates the implementation of a secure, local-first AI architecture that prioritizes data sovereignty and privacy.
-
-
-## Overview
-Standard LLM implementations often require transmitting sensitive data to third-party cloud providers. Aura-RAG solves this by utilizing a local inference engine (Ollama) and a local vector database (ChromaDB), ensuring that all data processing remains on the host machine.
+Aura-RAG is a localized Retrieval-Augmented Generation (RAG) system designed to interact with private document sets without external API dependencies. This project prioritizes data sovereignty and privacy.
 
 ## Technical Stack
-* Orchestration: LangChain (LCEL)
-* LLM: Llama 3.2 (via Ollama)
-* Vector Database: ChromaDB
-* Embeddings: nomic-embed-text
-* Development Environment: Python 3.13
+* **Orchestration:** LangChain (LCEL)
+* **LLM:** Llama 3.2 (via Ollama)
+* **Vector Database:** ChromaDB
+* **Embeddings:** mxbai-embed-large
+* **Frontend:** Streamlit
 
 ## Core Logic
-1. Ingestion: Processes unstructured data from local directories (PDF, CSV).
-2. Document Chunking: Implements recursive character splitting to maintain semantic context within model window limits.
-3. Vectorization: Converts text chunks into high-dimensional embeddings using the nomic-embed-text model.
-4. Semantic Retrieval: Employs vector similarity search to identify relevant context for user queries.
-5. Grounded Generation: Augments the LLM prompt with retrieved context to ensure deterministic and factually accurate responses.
+1. **Ingestion:** Processes unstructured CSV data.
+2. **Vectorization:** Converts text into high-dimensional embeddings using `mxbai-embed-large`.
+3. **Semantic Retrieval:** Employs vector similarity search via ChromaDB.
+4. **Grounded Generation:** Augments the LLM prompt with retrieved context for accurate responses.
+
+## Frontend Features
+* **Interactive Chat UI:** Responsive dashboard built with Streamlit.
+* **Session State:** Maintains conversation history during the active session.
+* **Source Attribution:** Collapsible "Source Context" to verify model outputs.
 
 ## Setup and Installation
-1. Install Ollama and pull the required model:
+1. **Pull Models:**
    ```bash
    ollama pull llama3.2
+   ollama pull mxbai-embed-large
